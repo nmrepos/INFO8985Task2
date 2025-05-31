@@ -58,7 +58,7 @@ receivers:
                 job_name: otel-collector
   sqlquery:
     driver: postgres
-    datasource: 'host=localhost port=5432 user=devtedsuser password=devtedspass sslmode=disable'
+    datasource: 'host=db port=5432 user=devtedsuser password=devtedspass sslmode=disable'
     queries:
       - sql: 'select * from my_logs where log_id > $$1'
         tracking_start_value: '10000'
@@ -70,7 +70,7 @@ receivers:
           - metric_name: movie.genres
             value_column: 'count'
   postgresql:
-    endpoint: localhost:5432
+    endpoint: db:5432
     transport: tcp
     username: devtedsuser
     password: devtedspass
